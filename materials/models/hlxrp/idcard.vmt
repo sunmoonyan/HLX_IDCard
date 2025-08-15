@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+    "$basetexture" "models/hlxrp/idcard"
+    "$surfaceprop" "plastic"
+    "$opaque" 1
+}
