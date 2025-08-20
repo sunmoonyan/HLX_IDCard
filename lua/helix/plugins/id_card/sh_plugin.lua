@@ -20,15 +20,24 @@ ix.config.Add("giveIdCard", true, "Automatically give a new character an ID card
     category = "ID Card"
 })
 
-
 if SERVER then
-    function PLUGIN:LoadData()
-
-    end
-
     function PLUGIN:OnCharacterCreated(client, character)
+        if ix.config.Get("giveIdCard") then
         character:GiveIDCard()
+        end
     end
 
     include("id_card/sv_idcard.lua")
+
+else
+
+function PLUGIN:CharacterLoaded(character)
+
+end
+
+function PLUGIN:PopulateItemTooltip(tooltip, item)
+
+
+end
+
 end
