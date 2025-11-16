@@ -1,0 +1,6 @@
+"VertexLitGeneric"
+{
+    "$basetexture" "models/hlxrp/cardreader"
+    "$surfaceprop" "plastic"
+    "$opaque" 1
+}

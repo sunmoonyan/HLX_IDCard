@@ -13,31 +13,32 @@ local PLUGIN = PLUGIN
 
 PLUGIN.name = "ID Card"
 PLUGIN.author = "Sunshi"
-PLUGIN.description = "Add id card to the player, usefull for roleplay."
-PLUGIN.requires = {}
+PLUGIN.description = "Adds an ID card system and card reader for simple, immersive roleplay access control."
 
 ix.config.Add("giveIdCard", true, "Automatically give a new character an ID card upon creation.", nil, {
     category = "ID Card"
 })
 
 if SERVER then
+
+    local character = ix.meta.character
+    local IdCard = {}
+
+    function character:GiveIDCard()
+        local inv = self:GetInventory()
+        inv:Add("idcard", 1, {
+            name = self:GetName(),
+            id = self:GetID() 
+        })
+    end
+
+
     function PLUGIN:OnCharacterCreated(client, character)
         if ix.config.Get("giveIdCard") then
         character:GiveIDCard()
         end
     end
+   
 
-    include("id_card/sv_idcard.lua")
-
-else
-
-function PLUGIN:CharacterLoaded(character)
-
-end
-
-function PLUGIN:PopulateItemTooltip(tooltip, item)
-
-
-end
 
 end
